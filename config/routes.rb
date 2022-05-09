@@ -1,8 +1,17 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do  
 
-  namespace :admin do
-    get 'categories/index'
-  end
+  # These routes will be for signup. The first renders a form in te browse, the second will
+  # receive the form andd create a user in our database using the ddata given to us by te user.
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+  
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
+  # namespace :admin do
+  # get 'categories/index'
+  # end
   get 'about/index'
   root to: 'products#index'
 
